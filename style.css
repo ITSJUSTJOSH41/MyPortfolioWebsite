@@ -258,3 +258,112 @@ footer {
   color: #fff;
   transform: scale(1.05);
 }
+
+/* ===== Carousel Styles ===== */
+.carousel-container {
+  position: relative;
+  width: 250px;
+  margin: 0 auto 2rem auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.carousel-slide {
+  display: none;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 300px;         /* all images will have the same height */
+  object-fit: cover;     /* crops edges to fill box nicely */
+  border-radius: 10px;
+}
+
+/* Fade animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@keyframes fade {
+  from { opacity: 0.4 } 
+  to { opacity: 1 }
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;                  /* centers vertically */
+  transform: translateY(-50%); /* keeps centered even if height changes */
+  width: auto;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  transition: background 0.3s ease;
+  z-index: 5;
+}
+
+.prev {
+  left: 10px; /* pushes the left arrow to the left edge */
+}
+
+.next {
+  right: 10px; /* pushes the right arrow to the right edge */
+}
+
+/* Dots */
+.dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 3px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.4s ease;
+}
+
+.active-dot, .dot:hover {
+  background-color: #27AEE8;
+}
+
+.video-section {
+  margin: 60px auto;
+  max-width: 900px;
+  text-align: center;
+  color: #fff;
+}
+
+.video-section h2 {
+  color: #27AEE8;
+  margin-bottom: 20px;
+}
+
+/* Make video responsive */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}

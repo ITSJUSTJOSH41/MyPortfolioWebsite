@@ -22,6 +22,32 @@
     </header>
 
   <main>
+    <section class="skills-section">
+        <div class="carousel-container">
+            <div class="carousel-slide fade">
+                <img src="images/photo1.png" alt="Image 1">
+            </div>
+            <div class="carousel-slide fade">
+                <img src="images/photo2.png" alt="Image 2">
+            </div>
+            <div class="carousel-slide fade">
+                <img src="images/photo3.png" alt="Image 3">
+            </div>
+
+            <!-- Navigation buttons -->
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        </div>
+
+        <!-- Dots below carousel -->
+        <div class="dots" style="text-align:center">
+            <span class="dot" onclick="setSlide(1)"></span>
+            <span class="dot" onclick="setSlide(2)"></span>
+            <span class="dot" onclick="setSlide(3)"></span>
+        </div>
+    </section>
+  
+  
     <!-- Technical Skills Section -->
     <section class="skills-section">
       <h2>Programming Languages</h2>
@@ -75,5 +101,35 @@
   <footer>
     <p>2025 MyPortfolio — Josh Swanson</p>
   </footer>
+      <script>
+        let slideIndex = 1;
+        showSlide(slideIndex);
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function setSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            let slides = document.getElementsByClassName("carousel-slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active-dot", "");
+            }
+            slides[slideIndex - 1].style.display = "block";  
+            dots[slideIndex - 1].className += " active-dot";
+        }
+
+        // Auto-rotate every 4 seconds
+        setInterval(() => changeSlide(1), 4000);
+    </script>
 </body>
 </html>

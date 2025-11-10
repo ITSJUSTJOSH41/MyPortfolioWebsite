@@ -22,7 +22,7 @@
 	
 	
     <main class="section">
-        <!-- Banner image -->
+		
         <img src="images/mindmap.jpeg" alt="Photo" class="profile-img">
 
         <h2>About Me</h2>
@@ -34,11 +34,54 @@
 		<p>The various pages on my site contain information regarding my experience in relation to technology and some of the projects and skills I have developed over
 		the years. Furthermore, the site contains a page which speaks on some of my future ambitions/career goals, in addition to a page with important contact information.
 		The primary purpose of the site is to get a basic preview of some of my technical abilities.</p>
+		
+		<h2>CS Video</h2>
+		<div class="video-container">
+		<iframe 
+			src="https://www.youtube.com/watch?v=CxGSnA-RTsA&t=115s" 
+			title="YouTube video player"
+			frameborder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			allowfullscreen>
+		</iframe>
+		</div>
+		<p>The video above is a great overview of a variety of computer science topics. I find this video to be a great way to introduce people to computer science topics as the video touches on
+		the different components of a computer and explains how key programming languages work. Furthermore, the video is fast-paced and pretty easy to digest, while still touching on many key CS topics
+		such as how the cpu works, the different uses of programming languages, and how memory is stored.</p>
     </main>
 
     <footer>
         <p>2025 MyPortfolio — Josh Swanson</p>
     </footer>
-	<script>
+    <script>
+        let slideIndex = 1;
+        showSlide(slideIndex);
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function setSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            let slides = document.getElementsByClassName("carousel-slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active-dot", "");
+            }
+            slides[slideIndex - 1].style.display = "block";  
+            dots[slideIndex - 1].className += " active-dot";
+        }
+
+        // Auto-rotate every 4 seconds
+        setInterval(() => changeSlide(1), 4000);
+    </script>
 </body>
 </html>
